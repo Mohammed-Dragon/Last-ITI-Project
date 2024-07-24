@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "942045168384",
+    "project_id": "iti-project-17989",
+    "storage_bucket": "iti-project-17989.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942045168384:android:b64e7f05f1899bf75229e5",
+        "android_client_info": {
+          "package_name": "com.example.sports_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "942045168384-ht2q9v7din4q52imoi46r67q4ve9c7er.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6u9u65-EUDpxajTZkwshKTwsb_vbSd_4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "942045168384-ht2q9v7din4q52imoi46r67q4ve9c7er.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "942045168384-713c3mslrs6fblm3hvomqhrbcharqblp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.sportsApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

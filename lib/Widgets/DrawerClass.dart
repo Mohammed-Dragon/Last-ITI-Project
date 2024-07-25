@@ -42,8 +42,6 @@ class _myDrawerState extends State<myDrawer> {
           i = googleName.length;
         }
       }
-      // name = google_name;
-      // print("*//**//*/**/*/**//**/**//*${google_logedin}");
 
       if (google_logedin == true) {
         name = googleName;
@@ -82,7 +80,7 @@ class _myDrawerState extends State<myDrawer> {
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.09),
             Text(
-              "Phone:  ${phone ?? " "}",
+              "Phone |  ${phone ?? " "}",
               style: GoogleFonts.lato(color: Colors.white, fontSize: 20),
             ),
             const SizedBox(
@@ -90,7 +88,7 @@ class _myDrawerState extends State<myDrawer> {
             ),
             if (google_logedin == true)
               Text(
-                "First Name:  ${first_name ?? " "}",
+                "First Name |  ${first_name ?? " "}",
                 style: GoogleFonts.lato(color: Colors.white, fontSize: 20),
               ),
             const SizedBox(
@@ -98,7 +96,7 @@ class _myDrawerState extends State<myDrawer> {
             ),
             if (google_logedin == true)
               Text(
-                "Last Name:  ${last_name ?? " "}",
+                "Last Name |  ${last_name ?? " "}",
                 style: GoogleFonts.lato(color: Colors.white, fontSize: 20),
               ),
             const Spacer(),

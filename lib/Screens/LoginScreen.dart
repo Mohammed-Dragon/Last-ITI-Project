@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sports_app/Screens/HomeScreen.dart';
 import 'package:sports_app/Screens/verify.dart';
+import 'package:sports_app/Widgets/my_button2.dart';
 import 'package:sports_app/Widgets/square_tile.dart';
 
 // ignore: must_be_immutable
@@ -21,7 +21,7 @@ class PhoneNumberPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Color(0xff242C3B),
+        color: const Color(0xff242C3B),
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: SingleChildScrollView(
@@ -41,7 +41,7 @@ class PhoneNumberPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.09),
-                  Container(
+                  SizedBox(
                     width: MediaQuery.of(context).size.width * 0.8,
                     child: TextFormField(
                       validator: (value) {
@@ -73,8 +73,8 @@ class PhoneNumberPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-                  ElevatedButton(
-                    onPressed: () {
+                  MyButton2(
+                    onTap: () {
                       if (_formKey.currentState!.validate()) {
                         Navigator.push(
                           context,
@@ -85,27 +85,7 @@ class PhoneNumberPage extends StatelessWidget {
                         );
                       }
                     },
-                    style: ElevatedButton.styleFrom(
-                      fixedSize:
-                          Size(MediaQuery.of(context).size.width * 0.8, 60),
-                      shadowColor: Colors.black,
-                      elevation: 10,
-                      backgroundColor: Color.fromARGB(255, 0, 27, 164),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      textStyle: const TextStyle(
-                        fontSize: 18,
-                      ),
-                    ),
-                    child: const Text(
-                      'Log In',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
-                    ),
+                    text: 'Log In',
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.06),
                   Padding(
@@ -118,8 +98,8 @@ class PhoneNumberPage extends StatelessWidget {
                             color: Colors.grey[400],
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10.0),
                           child: Text(
                             'Or continue with',
                             style: TextStyle(color: Colors.white),
@@ -146,7 +126,7 @@ class PhoneNumberPage extends StatelessWidget {
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute<void>(
-                                  builder: (context) => HomeScreen(),
+                                  builder: (context) => const HomeScreen(),
                                 ),
                               );
                             } catch (e) {
@@ -160,8 +140,8 @@ class PhoneNumberPage extends StatelessWidget {
                           child: const SquareTile(
                               imagePath: 'assets/Logos/google.png'),
                         ),
-                        SizedBox(width: 40),
-                        SquareTile(imagePath: 'assets/Logos/apple.png')
+                        const SizedBox(width: 40),
+                        const SquareTile(imagePath: 'assets/Logos/apple.png')
                       ]),
                     ],
                   ),

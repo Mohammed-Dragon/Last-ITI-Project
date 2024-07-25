@@ -11,7 +11,7 @@ Future<void> showMyDialog(BuildContext context) async {
           TextButton(
             child: const Text('OK'),
             onPressed: () {
-              Navigator.of(context).pop(); // Close the dialog
+              Navigator.of(context).pop();
             },
           ),
         ],

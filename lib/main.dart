@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:sports_app/Cubits/Circular_Indicator_Cubit/circular_indicator_cubit.dart';
 import 'package:sports_app/Cubits/FootballCountries/football_countries_cubit.dart';
 import 'package:sports_app/Cubits/LeagueCubit/league_cubit.dart';
@@ -14,19 +15,48 @@ import 'package:sports_app/firebase_options.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
+  // ignore: avoid_print
   print("Handling a background message: ${message.messageId}");
 }
+
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
+
+const AndroidNotificationChannel channel = AndroidNotificationChannel(
+  'high_importance_channel',
+  'High Importance Notifications',
+  description: 'This channel is used for important notifications.',
+  importance: Importance.high,
+);
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
+  await flutterLocalNotificationsPlugin
+      .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin>()
+      ?.createNotificationChannel(channel);
+
   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-    print('Got a message whilst in the foreground!');
-    print('Message data: ${message.data}');
-    if (message.notification != null) {
-      print('Message also contained a notification: ${message.notification}');
+    RemoteNotification? notification = message.notification;
+    AndroidNotification? android = message.notification?.android;
+    if (notification != null && android != null) {
+      flutterLocalNotificationsPlugin.show(
+        notification.hashCode,
+        notification.title,
+        notification.body,
+        NotificationDetails(
+          android: AndroidNotificationDetails(
+            channel.id,
+            channel.name,
+            channelDescription: channel.description,
+            icon: 'launch_background',
+          ),
+        ),
+      );
     }
   });
 
@@ -67,11 +97,11 @@ class MyApp extends StatelessWidget {
         title: 'Sports App',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(
-            seedColor: Color.fromARGB(255, 50, 85, 225),
+            seedColor: const Color.fromARGB(255, 50, 85, 225),
           ),
           useMaterial3: true,
         ),
-        home: SplashScreen(),
+        home: const SplashScreen(),
       ),
     );
   }

@@ -9,7 +9,7 @@ import 'package:sports_app/Screens/PlayersScreen.dart';
 import 'package:sports_app/Widgets/DrawerClass.dart';
 
 class TeamsScreen extends StatelessWidget {
-  TeamsScreen({super.key});
+  const TeamsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class TeamsScreen extends StatelessWidget {
         child: Stack(children: [
           Scaffold(
             appBar: AppBar(
-              backgroundColor: Color.fromARGB(255, 0, 27, 164),
+              backgroundColor: const Color.fromARGB(255, 0, 27, 164),
               automaticallyImplyLeading: false,
               toolbarHeight: MediaQuery.of(context).size.height * (1 / 50),
               bottom: const TabBar(
@@ -45,10 +45,9 @@ class TeamsScreen extends StatelessWidget {
             body: TabBarView(
               children: [
                 Container(
-                  color: Color(0xff242C3B),
+                  color: const Color(0xff242C3B),
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height,
-                  // color: Colors.red,
                   child: Padding(
                     padding: const EdgeInsets.only(left: 10, right: 10),
                     child: Column(
@@ -108,7 +107,6 @@ class TeamsScreen extends StatelessWidget {
                                     team_id = state.teamsresponse.result[index]
                                             .teamKey ??
                                         10;
-                                    print(team_id);
                                     return InkWell(
                                       onTap: () {
                                         player_name = "";
@@ -136,17 +134,17 @@ class TeamsScreen extends StatelessWidget {
                                             borderRadius:
                                                 BorderRadius.circular(10),
                                             border: Border.all(
-                                              color: Color.fromARGB(
+                                              color: const Color.fromARGB(
                                                   255, 145, 142, 142),
                                               width: 1.6,
                                             ),
                                           ),
                                           margin: const EdgeInsets.all(5),
                                           child: Column(
-                                            mainAxisAlignment: MainAxisAlignment
-                                                .center, // Center vertically
-                                            crossAxisAlignment: CrossAxisAlignment
-                                                .center, // Center horizontally
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
                                             children: [
                                               Image.network(
                                                 state.teamsresponse
@@ -162,9 +160,7 @@ class TeamsScreen extends StatelessWidget {
                                                 width: 70,
                                                 height: 70,
                                               ),
-                                              SizedBox(
-                                                  height:
-                                                      8), // Add some space between image and text
+                                              const SizedBox(height: 8),
                                               Text(
                                                 state
                                                         .teamsresponse
@@ -175,8 +171,7 @@ class TeamsScreen extends StatelessWidget {
                                                   fontSize: 20,
                                                   fontWeight: FontWeight.bold,
                                                 ),
-                                                textAlign: TextAlign
-                                                    .center, // Center the text within its own bounds
+                                                textAlign: TextAlign.center,
                                               ),
                                             ],
                                           )),
@@ -202,7 +197,7 @@ class TeamsScreen extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  color: Color(0xff242C3B),
+                  color: const Color(0xff242C3B),
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height,
                   child: Column(
@@ -237,7 +232,7 @@ class TeamsScreen extends StatelessWidget {
                                             borderRadius:
                                                 BorderRadius.circular(10),
                                             border: Border.all(
-                                              color: Color.fromARGB(
+                                              color: const Color.fromARGB(
                                                   255, 145, 142, 142),
                                               width: 1.6,
                                             ),
@@ -257,7 +252,7 @@ class TeamsScreen extends StatelessWidget {
                                                         255, 15, 47, 207),
                                                   ),
                                                 ),
-                                                Spacer(),
+                                                const Spacer(),
                                                 Column(
                                                   children: [
                                                     Text(
@@ -269,12 +264,7 @@ class TeamsScreen extends StatelessWidget {
                                                           fontSize: 20),
                                                     ),
                                                     Text(
-                                                      "penalty goals " +
-                                                          state
-                                                              .goalsresponse
-                                                              .result[index]
-                                                              .penaltyGoals
-                                                              .toString(),
+                                                      "penalty goals ${state.goalsresponse.result[index].penaltyGoals}",
                                                       style: const TextStyle(
                                                           fontSize: 13,
                                                           color: Color.fromRGBO(
@@ -282,14 +272,14 @@ class TeamsScreen extends StatelessWidget {
                                                     ),
                                                   ],
                                                 ),
-                                                Spacer(),
+                                                const Spacer(),
                                                 Text(
                                                   state.goalsresponse
                                                       .result[index].teamName,
                                                   style: const TextStyle(
                                                       fontSize: 15),
                                                 ),
-                                                Spacer(),
+                                                const Spacer(),
                                                 Text(
                                                   state.goalsresponse
                                                       .result[index].goals
@@ -305,9 +295,9 @@ class TeamsScreen extends StatelessWidget {
                             ],
                           ));
                         } else {
-                          return Padding(
-                            padding: const EdgeInsets.only(top: 30),
-                            child: const Center(
+                          return const Padding(
+                            padding: EdgeInsets.only(top: 30),
+                            child: Center(
                               child: Text(
                                 'There is no data here',
                                 style: TextStyle(

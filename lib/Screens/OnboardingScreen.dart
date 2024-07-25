@@ -34,120 +34,128 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          BlocBuilder<SliderCubit, SliderState>(
-            builder: (context, state) {
-              return CarouselSlider(
-                items: List.generate(
-                  _titles.length,
-                  (index) => Stack(
-                    children: [
-                      Positioned.fill(
-                        child: Image.asset(
-                          'assets/Images/${index + 1}.png',
-                          fit: BoxFit.cover,
+      body: Container(
+        color: const Color(0xff242C3B),
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: Stack(
+          children: [
+            BlocBuilder<SliderCubit, SliderState>(
+              builder: (context, state) {
+                return CarouselSlider(
+                  items: List.generate(
+                    _titles.length,
+                    (index) => Stack(
+                      children: [
+                        Positioned.fill(
+                          child: Image.asset(
+                            'assets/Images/${index + 1}.png',
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        color: Color.fromARGB(100, 0, 0, 0),
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              _titles[index],
-                              style: GoogleFonts.lato(
-                                fontSize: 40,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          color: const Color.fromARGB(100, 0, 0, 0),
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                _titles[index],
+                                style: GoogleFonts.lato(
+                                  fontSize: 40,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
                               ),
-                            ),
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.15,
-                            ),
-                            Text(
-                              _subtitles[index],
-                              style: const TextStyle(
-                                  fontSize: 25, color: Colors.white),
-                            ),
-                          ],
+                              SizedBox(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.15,
+                              ),
+                              Text(
+                                _subtitles[index],
+                                style: const TextStyle(
+                                    fontSize: 25, color: Colors.white),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                carouselController: _carouselController,
-                options: CarouselOptions(
-                  height: MediaQuery.of(context).size.height,
-                  aspectRatio: 16 / 9,
-                  viewportFraction: 1,
-                  initialPage: 0,
-                  enableInfiniteScroll: true,
-                  reverse: false,
-                  autoPlay: true,
-                  autoPlayInterval: const Duration(seconds: 4),
-                  autoPlayAnimationDuration: const Duration(milliseconds: 800),
-                  autoPlayCurve: Curves.fastOutSlowIn,
-                  enlargeCenterPage: true,
-                  enlargeFactor: 0.3,
-                  onPageChanged: (index, reason) {
-                    setState(() {
-                      _activePage = index;
-                    });
-                    context.read<SliderCubit>().Slider();
-                  },
-                  scrollDirection: Axis.horizontal,
-                ),
-              );
-            },
-          ),
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                BlocBuilder<SliderCubit, SliderState>(
-                  builder: (context, state) {
-                    return AnimatedSmoothIndicator(
-                      activeIndex: _activePage,
-                      count: _titles.length,
-                      onDotClicked: (index) {
-                        setState(() {
-                          _activePage = index;
-                        });
-                        _carouselController.animateToPage(_activePage);
-                        context.read<SliderCubit>().button();
-                      },
-                      effect: ScrollingDotsEffect(
-                        dotColor: Colors.grey,
-                        activeDotColor: Color.fromARGB(255, 4, 48, 128),
-                      ),
-                    );
-                  },
-                ),
-                Container(
-                  margin: const EdgeInsets.only(bottom: 20, top: 20),
-                  child: MyButton(
-                    text: "Skip",
-                    onTap: () async {
-                      final prefs = await SharedPreferences.getInstance();
-                      prefs.setBool('showHome', true);
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (context) => PhoneNumberPage(),
+                  carouselController: _carouselController,
+                  options: CarouselOptions(
+                    height: MediaQuery.of(context).size.height,
+                    aspectRatio: 16 / 9,
+                    viewportFraction: 1,
+                    initialPage: 0,
+                    enableInfiniteScroll: true,
+                    reverse: false,
+                    autoPlay: true,
+                    autoPlayInterval: const Duration(seconds: 3),
+                    autoPlayAnimationDuration:
+                        const Duration(milliseconds: 900),
+                    autoPlayCurve: Curves.ease,
+                    enlargeCenterPage: true,
+                    enlargeFactor: 0.3,
+                    onPageChanged: (index, reason) {
+                      setState(() {
+                        _activePage = index;
+                      });
+                      context.read<SliderCubit>().Slider();
+                    },
+                    scrollDirection: Axis.horizontal,
+                  ),
+                );
+              },
+            ),
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  BlocBuilder<SliderCubit, SliderState>(
+                    builder: (context, state) {
+                      return AnimatedSmoothIndicator(
+                        activeIndex: _activePage,
+                        count: _titles.length,
+                        onDotClicked: (index) {
+                          setState(() {
+                            _activePage = index;
+                          });
+                          _carouselController.animateToPage(_activePage);
+                          context.read<SliderCubit>().button();
+                        },
+                        effect: const ScrollingDotsEffect(
+                          dotColor: Colors.grey,
+                          activeDotColor: Color.fromARGB(255, 0, 31, 185),
                         ),
                       );
                     },
                   ),
-                ),
-                const SizedBox(height: 20),
-              ],
+                  Container(
+                    margin: const EdgeInsets.only(bottom: 20, top: 20),
+                    child: MyButton(
+                      text: "Skip",
+                      onTap: () async {
+                        final prefs = await SharedPreferences.getInstance();
+                        prefs.setBool('showHome', true);
+                        // ignore: use_build_context_synchronously
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                            builder: (context) => PhoneNumberPage(),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class CodePage extends StatefulWidget {
   final String? phoneNumber;
-  CodePage({required this.phoneNumber, super.key});
+  const CodePage({required this.phoneNumber, super.key});
 
   @override
   _CodePageState createState() => _CodePageState();
@@ -36,9 +36,9 @@ class _CodePageState extends State<CodePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff242C3B),
+        backgroundColor: const Color(0xff242C3B),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.white),
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -46,7 +46,7 @@ class _CodePageState extends State<CodePage> {
         elevation: 0,
       ),
       body: Container(
-        color: Color(0xff242C3B),
+        color: const Color(0xff242C3B),
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: SingleChildScrollView(
@@ -86,7 +86,7 @@ class _CodePageState extends State<CodePage> {
                         if (otpCode != randomOtp) {
                           _pinController.clear();
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
+                            const SnackBar(
                               content:
                                   Text('Incorrect code. Please try again.'),
                               backgroundColor: Colors.red,
@@ -142,7 +142,8 @@ class _CodePageState extends State<CodePage> {
                             Navigator.pushAndRemoveUntil(
                               context,
                               MaterialPageRoute<void>(
-                                builder: (BuildContext context) => HomeScreen(),
+                                builder: (BuildContext context) =>
+                                    const HomeScreen(),
                               ),
                               (Route<dynamic> route) => false,
                             );
@@ -158,7 +159,8 @@ class _CodePageState extends State<CodePage> {
                               Size(MediaQuery.of(context).size.width * 0.8, 60),
                           shadowColor: Colors.black,
                           elevation: 10,
-                          backgroundColor: Color.fromARGB(255, 0, 27, 164),
+                          backgroundColor:
+                              const Color.fromARGB(255, 0, 27, 164),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
@@ -183,7 +185,7 @@ class _CodePageState extends State<CodePage> {
                                       width: 25,
                                     ),
                                     Text(
-                                      'Please Wait...',
+                                      '  Please Wait...',
                                       style: TextStyle(color: Colors.white),
                                     )
                                   ],
@@ -197,7 +199,7 @@ class _CodePageState extends State<CodePage> {
                     },
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.015,
+                    height: MediaQuery.of(context).size.height * 0.02,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 40.0),
@@ -245,11 +247,9 @@ class _CodePageState extends State<CodePage> {
                               },
                             );
                           },
-                          child: Text(
+                          child: const Text(
                             'Send new verification code?',
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: Color.fromARGB(232, 255, 255, 255)),
+                            style: TextStyle(fontSize: 16, color: Colors.white),
                           ),
                         ),
                       ],

@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -37,8 +39,8 @@ class _SplashScreenState extends State<SplashScreen> {
       context,
       MaterialPageRoute(
         builder: (context) => showHome
-            ? (_isLoggedIn ? HomeScreen() : PhoneNumberPage())
-            : OnboardingScreen(),
+            ? (_isLoggedIn ? const HomeScreen() : PhoneNumberPage())
+            : const OnboardingScreen(),
       ),
     );
   }
@@ -50,7 +52,7 @@ class _SplashScreenState extends State<SplashScreen> {
         fit: StackFit.expand,
         children: [
           Container(
-            color: Color(0xff242C3B),
+            color: const Color(0xff242C3B),
           ),
           Padding(
             padding: const EdgeInsets.all(50),

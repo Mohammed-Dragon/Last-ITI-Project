@@ -9,11 +9,11 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: myDrawer(),
+        drawer: const myDrawer(),
         appBar: AppBar(
           toolbarHeight: MediaQuery.of(context).size.height * 1 / 15,
           automaticallyImplyLeading: false,
-          backgroundColor: Color.fromARGB(255, 0, 27, 164),
+          backgroundColor: const Color.fromARGB(255, 0, 27, 164),
           title: Text(
             "SPORTS",
             style: GoogleFonts.lato(color: Colors.white, fontSize: 25),
@@ -31,7 +31,7 @@ class HomeScreen extends StatelessWidget {
         ),
         body: Center(
           child: Container(
-            color: Color(0xff242C3B),
+            color: const Color(0xff242C3B),
             height: double.infinity,
             width: double.infinity,
             child: Padding(
@@ -53,7 +53,7 @@ class HomeScreen extends StatelessWidget {
                         context,
                         MaterialPageRoute<void>(
                           builder: (BuildContext context) =>
-                              FootballCountriesView(),
+                              const FootballCountriesView(),
                         ),
                       );
                     },
@@ -158,7 +158,7 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             children: [
               Image.asset(image1),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Image.asset(image2),

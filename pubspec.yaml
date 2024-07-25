@@ -33,6 +33,7 @@ dependencies:
   flutter:
     sdk: flutter
   bloc: ^8.1.4
+  # page_transformer: ^1.0.1
   carousel_slider: ^4.2.1
   cupertino_icons: ^1.0.6
   equatable: ^2.0.5
@@ -58,7 +59,8 @@ dependencies:
   firebase_storage: ^12.1.1 
   provider: ^6.1.2
   image_picker: ^1.1.2
-  
+  flutter_local_notifications: ^9.7.0
+
 dev_dependencies: 
   flutter_lints: ^3.0.0
   flutter_test:
@@ -88,10 +90,10 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   # fonts:
-  #   - family: Schyler
+  #   - family: 
   #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
+  #       - asset: fonts/-Regular.ttf
+  #       - asset: fonts/-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:

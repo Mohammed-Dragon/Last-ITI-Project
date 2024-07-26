@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:sports_app/Widgets/AppBar.dart';
 import 'package:sports_app/Widgets/DrawerClass.dart';
 import 'package:sports_app/Screens/CountriesScreen.dart';
 
@@ -10,25 +10,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         drawer: const myDrawer(),
-        appBar: AppBar(
-          toolbarHeight: MediaQuery.of(context).size.height * 1 / 15,
-          automaticallyImplyLeading: false,
-          backgroundColor: const Color.fromARGB(255, 0, 27, 164),
-          title: Text(
-            "SPORTS",
-            style: GoogleFonts.lato(color: Colors.white, fontSize: 25),
-          ),
-          centerTitle: true,
-          leading: Builder(builder: (context) {
-            return IconButton(
-              color: Colors.white,
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
-              icon: const Icon(Icons.menu),
-            );
-          }),
-        ),
+        appBar: const MyAppBar(text: "SPORTS"),
         body: Center(
           child: Container(
             color: const Color(0xff242C3B),
@@ -41,7 +23,7 @@ class HomeScreen extends StatelessWidget {
                 childAspectRatio: ((MediaQuery.of(context).size.width) /
                     (MediaQuery.of(context).size.height -
                         20 -
-                        MediaQuery.of(context).size.height * 1 / 6)),
+                        MediaQuery.of(context).size.height * 1 / 4)),
                 crossAxisCount: 2,
                 children: [
                   buildGridItem(
@@ -76,8 +58,7 @@ class HomeScreen extends StatelessWidget {
                                 TextButton(
                                   child: const Text('OK'),
                                   onPressed: () {
-                                    Navigator.of(context)
-                                        .pop(); // Close the dialog
+                                    Navigator.of(context).pop();
                                   },
                                 ),
                               ],
@@ -103,8 +84,7 @@ class HomeScreen extends StatelessWidget {
                                 TextButton(
                                   child: const Text('OK'),
                                   onPressed: () {
-                                    Navigator.of(context)
-                                        .pop(); // Close the dialog
+                                    Navigator.of(context).pop();
                                   },
                                 ),
                               ],
@@ -118,25 +98,25 @@ class HomeScreen extends StatelessWidget {
                     'assets/Logos/Group 143726072.png',
                     () {
                       showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              title: const Text('Not Available yet'),
-                              content: const Text(
-                                'Coming Soon...',
-                                style: TextStyle(fontSize: 15),
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: const Text('Not Available yet'),
+                            content: const Text(
+                              'Coming Soon...',
+                              style: TextStyle(fontSize: 15),
+                            ),
+                            actions: <Widget>[
+                              TextButton(
+                                child: const Text('OK'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
                               ),
-                              actions: <Widget>[
-                                TextButton(
-                                  child: const Text('OK'),
-                                  onPressed: () {
-                                    Navigator.of(context)
-                                        .pop(); // Close the dialog
-                                  },
-                                ),
-                              ],
-                            );
-                          });
+                            ],
+                          );
+                        },
+                      );
                     },
                   ),
                 ],

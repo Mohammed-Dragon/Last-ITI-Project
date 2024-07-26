@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables, non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -25,16 +27,11 @@ class _myDrawerState extends State<myDrawer> {
     super.initState();
     Future<String> abc() async {
       final prefs = await SharedPreferences.getInstance();
-
       google_logedin = prefs.getBool('google_logedin') ?? false;
-
       phone_logedin = prefs.getBool('phone_logedin') ?? false;
       String phoneNumber = prefs.getString('phone_number').toString();
-      print("*//**//*/**/*/**//**/**//*$phoneNumber");
-
       String googleName = prefs.getString('google_name') ?? "";
       String googleNumber = prefs.getString('google_number') ?? "";
-
       for (int i = 0; i < googleName.length; i++) {
         if (googleName[i] == " ") {
           first_name = googleName.substring(0, i);
@@ -42,18 +39,15 @@ class _myDrawerState extends State<myDrawer> {
           i = googleName.length;
         }
       }
-
       if (google_logedin == true) {
         name = googleName;
         phone = googleNumber;
         setState(() {});
-        print("*//**//*/**/*/**//**/**//*$name");
         return phone;
       } else {
         phone = phoneNumber;
         first_name = null;
         last_name = null;
-        print("*//**//*/**/*/**//**/**//*$phone");
         setState(() {});
         return name;
       }
@@ -79,10 +73,11 @@ class _myDrawerState extends State<myDrawer> {
               ),
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.09),
-            Text(
-              "Phone |  ${phone ?? " "}",
-              style: GoogleFonts.lato(color: Colors.white, fontSize: 20),
-            ),
+            if (phone_logedin == true)
+              Text(
+                "Phone |  ${phone ?? " "}",
+                style: GoogleFonts.lato(color: Colors.white, fontSize: 20),
+              ),
             const SizedBox(
               height: 20,
             ),

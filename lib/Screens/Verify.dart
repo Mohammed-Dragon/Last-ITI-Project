@@ -62,7 +62,7 @@ class _CodePageState extends State<CodePage> {
                   ),
                   Image.asset(
                     "assets/Images/Page-1.png",
-                    height: 170,
+                    height: MediaQuery.of(context).size.height * 1 / 4.5,
                   ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 1 / 50,
@@ -95,8 +95,8 @@ class _CodePageState extends State<CodePage> {
                         }
                       },
                       defaultPinTheme: PinTheme(
-                        width: 60,
-                        height: 60,
+                        width: 75,
+                        height: 75,
                         textStyle:
                             const TextStyle(fontSize: 20, color: Colors.black),
                         decoration: BoxDecoration(
@@ -106,8 +106,8 @@ class _CodePageState extends State<CodePage> {
                         ),
                       ),
                       focusedPinTheme: PinTheme(
-                        width: 60,
-                        height: 60,
+                        width: 75,
+                        height: 75,
                         textStyle:
                             const TextStyle(fontSize: 20, color: Colors.black),
                         decoration: BoxDecoration(
@@ -117,8 +117,8 @@ class _CodePageState extends State<CodePage> {
                         ),
                       ),
                       submittedPinTheme: PinTheme(
-                        width: 60,
-                        height: 60,
+                        width: 75,
+                        height: 75,
                         textStyle:
                             const TextStyle(fontSize: 20, color: Colors.black),
                         decoration: BoxDecoration(
@@ -202,7 +202,7 @@ class _CodePageState extends State<CodePage> {
                     height: MediaQuery.of(context).size.height * 0.02,
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 50.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -249,7 +249,7 @@ class _CodePageState extends State<CodePage> {
                           },
                           child: const Text(
                             'Send new verification code?',
-                            style: TextStyle(fontSize: 16, color: Colors.white),
+                            style: TextStyle(fontSize: 17, color: Colors.white),
                           ),
                         ),
                       ],

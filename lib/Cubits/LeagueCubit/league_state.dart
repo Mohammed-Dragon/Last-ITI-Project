@@ -1,6 +1,5 @@
 part of 'league_cubit.dart';
 
-@immutable
 sealed class LeagueState {}
 
 final class LeagueInitial extends LeagueState {}

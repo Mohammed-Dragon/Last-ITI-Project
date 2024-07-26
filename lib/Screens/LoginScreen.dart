@@ -40,7 +40,7 @@ class PhoneNumberPage extends StatelessWidget {
                       child: Image.asset("assets/Logos/Sport News.png"),
                     ),
                   ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.09),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.13),
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.8,
                     child: TextFormField(
@@ -87,7 +87,7 @@ class PhoneNumberPage extends StatelessWidget {
                     },
                     text: 'Log In',
                   ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.06),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.1),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 40.0),
                     child: Row(

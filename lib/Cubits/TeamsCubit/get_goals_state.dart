@@ -1,6 +1,5 @@
 part of 'get_goals_cubit.dart';
 
-@immutable
 abstract class GetGoalsState {}
 
 class GetGoalsInitial extends GetGoalsState {}

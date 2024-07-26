@@ -5,6 +5,7 @@ import 'package:sports_app/Cubits/TeamsCubit/get_goals_cubit.dart';
 import 'package:sports_app/Cubits/TeamsCubit/get_teams_cubit.dart';
 import 'package:sports_app/Data/Repository/get_players_repo.dart';
 import 'package:sports_app/Data/Repository/get_teams_data_repo.dart';
+import 'package:sports_app/Widgets/AppBar.dart';
 import 'package:sports_app/Widgets/DrawerClass.dart';
 import 'package:sports_app/Screens/TeamsScreen.dart';
 
@@ -26,24 +27,7 @@ class _LeagueScreenState extends State<LeagueScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         drawer: const myDrawer(),
-        appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 0, 27, 164),
-          leading: Builder(builder: (context) {
-            return IconButton(
-              color: Colors.white,
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
-              icon: const Icon(Icons.menu),
-            );
-          }),
-          automaticallyImplyLeading: false,
-          title: const Text(
-            "LEAGUES",
-            style: TextStyle(color: Colors.white),
-          ),
-          centerTitle: true,
-        ),
+        appBar: const MyAppBar(text: "LEAGUES"),
         body: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,

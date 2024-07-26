@@ -96,7 +96,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     autoPlayInterval: const Duration(seconds: 3),
                     autoPlayAnimationDuration:
                         const Duration(milliseconds: 900),
-                    autoPlayCurve: Curves.ease,
+                    autoPlayCurve: Curves.easeIn,
                     enlargeCenterPage: true,
                     enlargeFactor: 0.3,
                     onPageChanged: (index, reason) {
